@@ -6,8 +6,12 @@ import ru.onetwo33.practice.homework1.shapes.Circle;
 import ru.onetwo33.practice.homework1.shapes.Shape;
 import ru.onetwo33.practice.homework1.shapes.Square;
 import ru.onetwo33.practice.homework1.task.Car;
+import ru.onetwo33.practice.homework1.task.CarEngine;
 import ru.onetwo33.practice.homework1.task.LightWeightCar;
 import ru.onetwo33.practice.homework1.task.Lorry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -29,21 +33,21 @@ public class Main {
         // - перенести логику start(), в класс Engine
         // - реализовать метод open() в абстрактном классе Car и сделать public, все машины должны уметь открываться
         System.out.println("------");
-        Car lightWeightCar = new LightWeightCar();
+        Car lightWeightCar = new LightWeightCar(new CarEngine(), "red", "T191");
         lightWeightCar.open();
-        lightWeightCar.engine.start();
+        lightWeightCar.getEngine().start();
         lightWeightCar.move();
 
-        Car lorry = new Lorry();
+        Car lorry = new Lorry(new CarEngine(), "grey", "KAMAZ");
         lightWeightCar.open();
-        lorry.engine.start();
+        lorry.getEngine().start();
         lorry.move();
 
         // 3. Написать пример кода, который реализует принцип полиморфизма, на примере фигур — круг, квадрат, треугольник
         System.out.println("------");
-        Shape shape = new Circle();
-        shape.sayType();
-        shape = new Square();
-        shape.sayType();
+        List<Shape> shapes = new ArrayList<>();
+        shapes.add(new Circle());
+        shapes.add(new Square());
+        shapes.forEach(Shape::sayType);
     }
 }

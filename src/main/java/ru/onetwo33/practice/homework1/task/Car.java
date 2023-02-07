@@ -1,10 +1,16 @@
 package ru.onetwo33.practice.homework1.task;
 
-public abstract class Car implements Moveable, Stopable {
+public abstract class Car implements Moveable {
 
-    public Engine engine = new Engine();
+    protected Engine engine;
     private String color;
     private String name;
+
+    public Car(Engine engine, String color, String name) {
+        this.engine = engine;
+        this.color = color;
+        this.name = name;
+    }
 
     public void open() {
         System.out.println("Car is open");
